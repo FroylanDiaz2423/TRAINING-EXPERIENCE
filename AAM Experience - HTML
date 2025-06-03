@@ -1,0 +1,61 @@
+<header id="header">
+    <img class="oxi-logo oxi-logo-white" src="https://www.onirix.com/ox-industry/onirix-industry.svg"> 
+    <img class="oxi-logo oxi-logo-black" src="https://www.onirix.com/ox-industry/onirix-industry-black.svg"> 
+</header>  
+
+<div id="oxi-mode-selector-id" class="oxi-mode-selector">
+    <span class="oxi-mode-selector-title">Selecciona la tarea que quieres realizar</span> 
+    <div class="oxi-mode-selector-options">
+
+        <div id="select-visual_guide" class="oxi-mode-selector-option clickable">
+            <div class="oxi-mode-selector-image-text">
+                <img class="oxi-mode-selector-image" src="https://www.onirix.com/ox-industry/visual_guide-image.jpg">
+                <span>Analizar</span>
+            </div>
+            <img class="oxi-mode-selector-image-chevron" src="https://www.onirix.com/ox-industry/chevron.svg">
+        </div>
+        <div class="oxi-mode-selector-option-separator"></div>
+
+        <div id="select-checklist" class="oxi-mode-selector-option clickable">
+            <div class="oxi-mode-selector-image-text">
+                <img class="oxi-mode-selector-image" src="https://www.onirix.com/ox-industry/checklist-image.jpg">
+                <span>CHECKLIST</span>
+            </div>
+            <img class="oxi-mode-selector-image-chevron" src="https://www.onirix.com/ox-industry/chevron.svg">
+        </div>
+        <div class="oxi-mode-selector-option-separator"></div>
+
+        <div id="select-training" class="oxi-mode-selector-option clickable">
+            <div class="oxi-mode-selector-image-text">
+                <img class="oxi-mode-selector-image" src="https://www.onirix.com/ox-industry/training-image.jpg">
+                <span>Training</span>
+            </div>
+            <img class="oxi-mode-selector-image-chevron" src="https://www.onirix.com/ox-industry/chevron.svg">
+        </div>
+
+         <div id="select-simulation" class="oxi-mode-selector-option clickable">
+        <div class="oxi-mode-selector-image-text">
+        <img class="oxi-mode-selector-image" src="https://www.onirix.com/ox-industry/checklist-image.jpg">
+        <span>Simulación</span>
+        </div>
+        <img class="oxi-mode-selector-image-chevron" src="https://www.onirix.com/ox-industry/chevron.svg">
+        </div>
+        <div class="oxi-mode-selector-option-separator"></div>
+        
+    </div>    
+</div>
+
+<div class="oxi-mode-selector-header">
+    <div id="menu-select-visual_guide" class="oxi-task-menu oxi-task-visual_guide">
+        <span class="oxi-selected-task">Analizar</span>
+    </div>  
+    <div id="menu-select-checklist" class="oxi-task-menu oxi-task-checklist">
+        <span class="oxi-selected-task">Checklist</span>
+    </div>
+      <div id="menu-select-simulation" class="oxi-task-menu oxi-task-simulation">
+        <span class="oxi-selected-task">Simulación</span>
+    </div>        
+    <div id="menu-select-training" class="oxi-task-menu oxi-task-training">
+        <span class="oxi-selected-task">Training</span>
+    </div>
+</div>
