@@ -1,0 +1,343 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+#header {
+
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
+    padding-top: var(--sat);
+}
+
+#header img.oxi-logo {
+    margin-top: 20px;
+}
+
+.oxi-logo-black{
+    display: none;
+}
+
+#oxi-mode-selector-id{
+    display: none;
+}
+
+.oxi-mode-selector{
+    background: rgba(9,0,14,0.74);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    gap: 40px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 auto;
+    z-index: 0;
+    position: relative;
+}
+
+.oxi-mode-selector-title{
+    font-family: "Open Sans", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 32px;
+    display: block;
+    padding: 0 34px;
+}
+
+.oxi-mode-selector-options{
+    background: #fff;
+    padding: 40px 34px;
+    width: 100%;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-sizing: border-box;
+}
+
+.oxi-mode-selector-option{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.oxi-mode-selector-image-text{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    width: 100%;
+}
+
+.oxi-mode-selector-image{
+    border-radius: 10px;
+    overflow: hidden;
+    width: 29.03%;
+    height: auto;
+}
+
+.oxi-mode-selector-image-text span{
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    color: #211F1F;
+    letter-spacing: 0;
+    line-height: 24px;
+}
+
+.oxi-mode-selector-image-chevron{
+    width: 19px;
+}
+
+.oxi-mode-selector-option-separator{
+    height: 1px;
+    width: 100%;
+    background-color: #E3E1E5;
+}
+
+.oxi-mode-selector-header{
+    position: fixed;
+    width: calc(100% - 40px);
+    margin: 60px auto 0;
+    box-sizing: border-box;
+    align-items: center;
+    left: 0;
+    right: 0;
+    display: none;
+    z-index: 999;
+    overflow: hidden;
+    max-width: 650px;
+    padding-top: var(--sat);
+}
+
+.oxi-mode-selector-header .oxi-task-menu{
+    width: 100%;
+    padding: 11px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Open Sans", sans-serif;
+    font-size: 17px;
+    color: #211F1F;
+    letter-spacing: -0.2px;
+    line-height: 22px;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.oxi-mode-selector-header .oxi-task-menu:first-child{
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.oxi-mode-selector-header .oxi-task-menu:last-child{
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.oxi-mode-selector-header .oxi-task-menu{
+    font-family: "Open Sans", sans-serif;
+    font-size: 15px;
+    color: #211F1F;
+    letter-spacing: 0;
+    line-height: 22px;
+    letter-spacing: -0.2px;
+}
+
+body.checklist-selected .oxi-task-training,
+body.checklist-selected .oxi-task-visual_guide,
+body.checklist-selected .oxi-task-simulation{
+    background: #fff;
+    color: #211F1F;
+}
+
+body.checklist-selected .oxi-mode-selector-header .oxi-task-checklist{
+    background: #FFC107;
+    color: #fff;
+    border-right: 1px solid hsl(56, 100%, 55%) 100%, 55%);
+}
+
+body.training-selected .oxi-task-checklist,
+body.training-selected .oxi-task-visual_guide, 
+body.training-selected .oxi-task-simulation{
+    background: #fff;
+    color: #211F1F;
+}
+
+body.training-selected .oxi-mode-selector-header .oxi-task-training{
+    background: #FF3A2F;
+    color: #fff;
+    border-left: 1px solid hsl(0, 100%, 50%)100%, 50%);
+}
+
+body.visual_guide-selected .oxi-task-checklist,
+body.visual_guide-selected .oxi-task-training, 
+body.visual_guide-selected .oxi-task-simulation{
+    background: #fff;
+    color: #211F1F;
+}
+
+body.visual_guide-selected .oxi-mode-selector-header .oxi-task-visual_guide{
+    background: #0073E6;
+    color: #fff;
+}
+
+body.simulation-selected .oxi-task-checklist,
+body.simulation-selected .oxi-task-training,
+body.simulation-selected .oxi-task-visual_guide{
+    background: #fff;
+    color: #211F1F;
+}
+
+body.simulation-selected .oxi-mode-selector-header .oxi-task-simulation{
+    background: #1adf00;
+    color: #fff;
+    border-left: 1px solid hsl(110, 100%, 50%)100%, 50%);
+}
+
+body.mode-selected .oxi-mode-selector{
+    display: none !important;
+}
+
+body.mode-selected .oxi-mode-selector-header{
+    display: flex;
+}
+
+body.visual_guide-selected .oxi-mode-selector-header .oxi-task-checklist{
+    border-right: 1px solid #E3E1E5;
+}
+
+body.training-selected .oxi-mode-selector-header .oxi-task-checklist{
+    border-left: 1px solid #E3E1E5;
+}
+
+.summary-toggle{
+    display: none;
+}
+
+body.training-selected .summary-toggle{
+    display: block;
+}
+
+@media screen and (min-width: 500px) {
+
+.oxi-mode-selector{
+    position: fixed;
+    justify-content: center;
+    gap: 30px;
+}
+
+.oxi-mode-selector-title{
+    width: 70%;
+    max-width: 320px;
+}
+
+.oxi-mode-selector-options{
+    width: 80%;
+    max-width: 380px;
+    border-radius: 20px;
+}
+
+.oxi-mode-selector-image-text span{
+    font-size: 16px;
+}
+
+.oxi-mode-selector-option {
+    cursor: pointer;
+    opacity: 1;
+    transition: all .3s;
+}
+
+.oxi-mode-selector-option:hover{
+    opacity: 0.8;
+}
+
+.oxi-mode-selector-option .oxi-mode-selector-image-chevron{
+    translate: 0px;
+    transition: all .3s;
+}
+
+.oxi-mode-selector-option:hover .oxi-mode-selector-image-chevron{
+    translate: 6px;
+}
+
+.oxi-mode-selector-header > div{
+    cursor: pointer;
+    opacity: 1;
+    transition: all .3s;
+}
+
+.oxi-mode-selector-header > div:hover{
+    opacity: 0.8;
+}
+
+body.visual_guide-selected .oxi-mode-selector-header .oxi-task-visual_guide:hover,
+body.checklist-selected .oxi-mode-selector-header .oxi-task-checklist:hover,
+body.training-selected .oxi-mode-selector-header .oxi-task-training:hover,
+body.simulation-selected .oxi-mode-selector-header .oxi-task-simulation:hover,{
+    opacity: 1;
+}
+
+
+
+
+}
+
+
+@media screen and (max-height: 660px) {
+
+.oxi-mode-selector-options {
+    padding: 20px;
+}
+
+.oxi-mode-selector-options {
+    max-width: 260px;
+    gap: 10px;
+}
+
+.oxi-mode-selector-title {
+    width: 70%;
+    max-width: 240px;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.oxi-mode-selector {
+    gap: 20px;
+}
+
+#header img.oxi-logo {
+    width: 80px;
+}
+
+.oxi-mode-selector-image-text span {
+    font-size: 15px;
+}
+
+}
+
+@media only screen and (orientation: landscape) {
+    #webar-switch-to-ar-button[_ngcontent-ng-c4061765087] {
+        bottom: 40px;
+        right: 0;
+        left: 0;
+        margin: 0 auto;
+    }
+
+#webar-switch-to-ar-button[_ngcontent-ng-c4061765087] {
+    background-color: #f2f1f3;
+    border: none;
+}
+
+}
+
