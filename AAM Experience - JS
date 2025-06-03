@@ -1,0 +1,187 @@
+import OnirixAnnotationsModule from "https://unpkg.com/@onirix/annotations-module@2.0.9/dist/ox-annotations-module.esm.js";
+import OnirixEmbedSDK from "https://unpkg.com/@onirix/embed-sdk@latest/dist/ox-embed-sdk.esm.js";
+import OnirixCameraModule from 'https://www.unpkg.com/@onirix/camera-controls-module@1.1.0/dist/ox-camera-controls-module.esm.js';
+
+// Initialize the Onirix Embed SDK
+const embedSDK = new OnirixEmbedSDK();
+await embedSDK.connect();
+
+// Create annotation modules with different templates
+const oxAnnotations = new OnirixAnnotationsModule(embedSDK, {template: "ox-question"});
+const oxAnnotationsChecklist = new OnirixAnnotationsModule(embedSDK, {template: "ox-checklist"});
+
+// Define constants for different modes
+const VISUAL = "TASK - ANALYZE";
+const CHECKLIST = "TASK - CHECKLIST";
+const TRAINING = "TASK - TRAINING";
+const SIMULATION = "TASK - SIMULATION";
+
+// Subscribe to the scene load end event
+embedSDK.subscribe(OnirixEmbedSDK.Events.SCENE_LOAD_END, async params => {
+    // Display the mode selector
+    document.getElementById('oxi-mode-selector-id').style.display ='flex';
+});
+
+// CHECKLIST SELECTOR
+
+document.querySelector("#select-checklist").addEventListener("click",() => {
+    // Update body classes and enable checklist mode
+    document.body.classList.add("mode-selected" , "checklist-selected");
+    embedSDK.enable(CHECKLIST , {
+        type: OnirixEmbedSDK.Transitions.TRANSLATION, 
+        time: 0.15,
+        x: 0,
+        y: 0.06,
+        z: 0, 
+        fade: true
+    });
+});
+
+// Add click event listener to the checklist menu selector
+document.querySelector("#menu-select-checklist").addEventListener("click",() => {
+    // Update body classes and enable checklist mode
+    document.body.classList.add("checklist-selected");
+    document.body.classList.remove("training-selected" , "visual_guide-selected", "simulation-selected");
+    embedSDK.enable(CHECKLIST , {
+        type: OnirixEmbedSDK.Transitions.TRANSLATION, 
+        time: 0.15,
+        x: 0,
+        y: 0.06,
+        z: 0, 
+        fade: true 
+    });
+
+    // Disable other modes
+    embedSDK.disable(TRAINING);
+    embedSDK.disable(VISUAL);
+    embedSDK.disable(SIMULATION);
+});
+
+// TRAINING SELECTOR
+
+// Add click event listener to the training selector
+document.querySelector("#select-training", "#menu-select-training").addEventListener("click",() => {
+    // Update body classes and enable training mode
+    document.body.classList.add("mode-selected" , "training-selected");
+    embedSDK.enable(TRAINING , {
+        type: OnirixEmbedSDK.Transitions.TRANSLATION, 
+        time: 0.15,
+        x: 0,
+        y: 0.06,
+        z: 0, 
+        fade: true
+    });
+});
+
+// Add click event listener to the training menu selector
+document.querySelector("#menu-select-training").addEventListener("click",() => {
+    // Update body classes and enable training mode
+    document.body.classList.add("training-selected");
+    document.body.classList.remove("checklist-selected" , "visual_guide-selected", "simulation-selected");
+    embedSDK.enable(TRAINING , {
+        type: OnirixEmbedSDK.Transitions.TRANSLATION, 
+        time: 0.15,
+        x: 0,
+        y: 0.06,
+        z: 0, 
+        fade: true
+    });
+
+    // Disable other modes
+    embedSDK.disable(CHECKLIST);
+    embedSDK.disable(VISUAL);
+    embedSDK.disable(SIMULATION);
+});
+
+// ANALIZAR SELECTOR
+
+// Add click event listener to the visual guide selector
+document.querySelector("#select-visual_guide", "#menu-select-visual_guide").addEventListener("click",() => {
+    // Update body classes and enable visual guide mode
+    document.body.classList.add("mode-selected" , "visual_guide-selected");
+    embedSDK.enable(VISUAL , {
+        type: OnirixEmbedSDK.Transitions.TRANSLATION, 
+        time: 0.15,
+        x: 0,
+        y: 0.06,
+        z: 0, 
+        fade: true
+    });
+});
+
+// Add click event listener to the visual guide menu selector
+document.querySelector("#menu-select-visual_guide").addEventListener("click",() => {
+    // Update body classes and enable visual guide mode
+    document.body.classList.add("visual_guide-selected");
+    document.body.classList.remove("training-selected" , "checklist-selected", "simulation-selected");
+    embedSDK.enable(VISUAL , {
+        type: OnirixEmbedSDK.Transitions.TRANSLATION, 
+        time: 0.15,
+        x: 0,
+        y: 0.06,
+        z: 0, 
+        fade: true
+    });
+
+    // Disable other modes
+    embedSDK.disable(TRAINING);
+    embedSDK.disable(CHECKLIST);
+    embedSDK.disable(SIMULATION);
+});
+
+// SIMULACIÓN SELECTOR
+
+// Add click event listener to the visual guide selector
+document.querySelector("#select-simulation", "#menu-select-simulation").addEventListener("click",() => {
+    // Update body classes and enable visual guide mode
+    document.body.classList.add("mode-selected" , "simulation-selected");
+    embedSDK.enable(SIMULATION , {
+        type: OnirixEmbedSDK.Transitions.TRANSLATION, 
+        time: 0.15,
+        x: 0,
+        y: 0.06,
+        z: 0, 
+        fade: true
+    });
+});
+
+// Add click event listener to the visual guide menu selector
+document.querySelector("#menu-select-simulation").addEventListener("click",() => {
+    // Update body classes and enable visual guide mode
+    document.body.classList.add("simulation-selected");
+    document.body.classList.remove("training-selected" , "checklist-selected", "visual_guide-selected");
+    embedSDK.enable(SIMULATION , {
+        type: OnirixEmbedSDK.Transitions.TRANSLATION, 
+        time: 0.15,
+        x: 0,
+        y: 0.06,
+        z: 0, 
+        fade: true
+    });
+
+    // Disable other modes
+    embedSDK.disable(TRAINING);
+    embedSDK.disable(CHECKLIST);
+    embedSDK.disable(VISUAL);
+});
+
+// Initialize the camera module and enable orbit controls
+const camera = new OnirixCameraModule(embedSDK, ['PREVIEW']);
+camera.enableOrbitControls();
+
+// Select all elements with the 'clickable' class
+const clickableElements = document.querySelectorAll('.clickable');
+
+// Define the click handler function
+function handleClick(event) {
+    // Animate the camera to a specific position and orientation
+    camera.animateTo(0.12773412812793775, 0.6643165840191794, 2.440201410676792, 0.02479595516026431, 0.29027598396907434, -0.6617009672213566,
+        'spherical ease-in-out', 
+        2.5
+    );
+}
+
+// Add the click listener to each element
+clickableElements.forEach(element => {
+    element.addEventListener('click', handleClick);
+});
